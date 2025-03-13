@@ -16,11 +16,11 @@ namespace Dungeon_Explorer
             {
                 {
                     Player player = new Player();
-                    Console.WriteLine("The player's name is: " + player.Player_Name);
+                    Console.WriteLine("The player's name is: " + player.playerName);
                     // The code below creates a "Monster" object.
-                    Monster Room_1_Monster = new Monster();
+                    Monster room1Monster = new Monster();
                     // The code below is to create a room.
-                    Room room = new Room(Room_1_Monster);
+                    Room room = new Room(room1Monster);
                     // The code below this has been commented out because it gave the user
                     // the same description as the first room.
                     // Monster_2 Room_2_Monster = new Monster_2();
@@ -33,19 +33,30 @@ namespace Dungeon_Explorer
 
         public class Player
         {
-            public string Player_Name;
+            public string playerName;
 
             public Player()
             {
-
-                Console.WriteLine("Please enter your name: ");
-                Player_Name = Console.ReadLine();
-                Console.WriteLine("Hello, " + Player_Name);
-                int Player_Health;
-                Player_Health = 50;
-                Console.WriteLine("Your Health is: " + Player_Health);
-                Console.WriteLine("Pick a room to go into: (1/2)");
-                Console.ReadLine();
+                while (true)
+                {
+                    Console.WriteLine("Please enter your name: ");
+                    playerName = Console.ReadLine();
+                    // Console.WriteLine("Hello, " + playerName);
+                    if (string.IsNullOrEmpty(playerName))
+                    {
+                        Console.WriteLine("You can't have an empty name. Please enter a name.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Hello, " + playerName);
+                        break;
+                    }
+                    int Player_Health;
+                    Player_Health = 50;
+                    Console.WriteLine("Your Health is: " + Player_Health);
+                    Console.WriteLine("Pick a room to go into: (1/2)");
+                    Console.ReadLine();
+                }
             }
 
             public class Inventory<T>
@@ -68,50 +79,52 @@ namespace Dungeon_Explorer
 
         public class Room
         {
-            public string Room_Description = "You have entered a bleak, dark looking room.";
+            public string roomDescription = "You have entered a bleak, dark looking room.";
             public string Item { get; set; } = "Apple.";
-            public Monster Room_1_Monster { get; set; }
+            public Monster room1Monster { get; set; }
 
-            public Room(Monster Room_1_Monster = null)
+            public Room(Monster room1Monster = null)
             {
-                Console.WriteLine("Room description: " + Room_Description);
+                Console.WriteLine("Room description: " + roomDescription);
                 Console.WriteLine("You have picked up an item: Apple.");
-                Room_1_Monster = Room_1_Monster;
-                if (Room_1_Monster != null)
+                room1Monster = room1Monster;
+                if (room1Monster != null)
                 {
-                    Console.WriteLine("You have encountered a monster: " + Room_1_Monster.Monster_Description);
+                    Console.WriteLine("You have encountered a monster: " + room1Monster.monsterDescription);
                 }
             }
         }
 
         public class Monster
         {
-            public string Monster_Description { get; set; } = "You have encountered an oversized frog.";
+            public string monsterDescription { get; set; } = "You have encountered an oversized frog.";
 
             public Monster()
             {
-                Console.WriteLine("Monster_Description: " + Monster_Description);
+                Console.WriteLine("Monster Description: " + monsterDescription);
             }
         }
 
-        public class Room_2
+        public class Room2
         {
-            public string Room_2_Description { get; set; } = "You have entered a room with bright lights.";
+            public string room2Description { get; set; } = "You have entered a room with bright lights.";
 
-            public Room_2()
+            public Room2()
             {
-                Console.WriteLine("Room_Description: " + Room_2_Description);
+                Console.WriteLine("Room_Description: " + room2Description);
             }
         }
 
-        // public class Monster_2
-        // {
-            // public string Monster_2_Description { get; set; } = "You have encountered a giant marshmellow monster.";
 
-            // public Monster_2(Monster Room_2_Monster = null);
-                // if (Room_2_Monster != null)
+        // The code below will be implemented at a later date.
+        // public class monster2
+        // {
+            // public string monster2Description { get; set; } = "You have encountered a giant marshmellow monster.";
+
+            // public monster2(monster room2Monster = null);
+                // if (room2Monster != null)
                 // {
-                    // Console.WriteLine("You have encountered a monster: " + Room_2_Monster.Monster_Description);
+                    // Console.WriteLine("You have encountered a monster: " + room2Monster.monsterDescription);
                 // }
         }
     }
