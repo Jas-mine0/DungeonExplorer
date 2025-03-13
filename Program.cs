@@ -41,7 +41,6 @@ namespace Dungeon_Explorer
                 {
                     Console.WriteLine("Please enter your name: ");
                     playerName = Console.ReadLine();
-                    // Console.WriteLine("Hello, " + playerName);
                     if (string.IsNullOrEmpty(playerName))
                     {
                         Console.WriteLine("You can't have an empty name. Please enter a name.");
